@@ -10,4 +10,5 @@ Role Variables
 |-------------------|------------------|-------------|
 |-------------------|------------------|-------------|
 
-
+# TODO
+compliant with centos : https://www.server-world.info/en/note?os=CentOS_7&p=iscsi&f=4
