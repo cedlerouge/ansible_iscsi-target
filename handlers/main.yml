@@ -1,0 +1,17 @@
+---
+- name: start iscsitarget
+  service:
+    name: iscsitarget
+    state: started
+
+- name: stop iscsitarget
+  service:
+    name: iscsitarget
+    state: stopped
+
+- name: restart iscsitarget
+  service:
+    name: iscsitarget
+    state: restarted
+
+

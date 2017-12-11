@@ -1,0 +1,30 @@
+---
+- name: install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ iscsitarget_packages }}"
+
+- name: debian enable iscsitarget
+  lineinfile:
+    dest: /etc/default/iscsitarget
+    regexp: '^ISCSITARGET_ENABLE='
+    line: 'ISCSITARGET_ENABLE=true'
+  when: ansible_os_family == 'Debian'
+  notify: restart iscsitarget
+
+- name: redhat enable iscsitarget
+  lineinfile:
+    dest: /etc/sysconfig/iscsitarget
+    regexp: '^ISCSITARGET_ENABLE='
+    line: 'ISCSITARGET_ENABLE=true'
+  when: ansible_os_family == 'RedHat'
+  notify: restart iscsitarget
+
+- name: configure ietd
+  template:
+    src: etc/iet/ietd.conf.j2
+    dest: /etc/iet/ietd.conf
+  when: ansible_os_family == 'Debian'
+  notify: restart iscsitarget 

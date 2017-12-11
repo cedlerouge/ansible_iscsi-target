@@ -1,0 +1,5 @@
+{% for iscsi_target in iscsi_targets %}
+{% if iscsi_target.allow_address is defined %}
+iscsi_target.name iscsi_target.allow_address
+{% endif %}
+{% endfor %}

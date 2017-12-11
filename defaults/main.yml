@@ -1,0 +1,12 @@
+iscsi_targets:
+  - name: "iqn.2017-12.net.example:san.disk1"
+    type: fileio
+    path: /iscsi_disks/disk1.img
+    incominguser: test
+    incomingpwd: testtest
+  - name: "iqn.2017-12.net.example:san.dev1"
+    type: blockio
+    path: /dev/vdb
+    incominguser: None
+    incomingpwd: None
+initiator_addresses: None

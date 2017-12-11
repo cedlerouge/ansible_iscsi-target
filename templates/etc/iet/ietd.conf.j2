@@ -1,0 +1,16 @@
+{{ ansible_managed | comment }}
+
+{% set count = 0 %}
+{% for iscsi_target in iscsi_targets %}
+
+Target {{ iscsi_target.name }}
+    Lun {{ count + loop.index0 }} Type={{ iscsi_target.type }},Path={{ iscsi_target.path }}
+    {% if initiator_addresses != None %}
+        {%  for initiator_address in initiator_addresses %} 
+    initiator-address {{ initiator_address }}
+        {% endfor %}
+    {% endif %}
+    {% if iscsi_target.incominguser != None and iscsi_target.incomingpwd != None%}
+    IncomingUser {{ iscsi_target.incominguser }} {{ iscsi_target.incomingpwd }}
+    {% endif %}
+{% endfor %}

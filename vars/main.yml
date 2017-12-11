@@ -1,0 +1,5 @@
+---
+iscsitarget_packages:
+  - iscsitarget
+  - iscsitarget-dkms
+
